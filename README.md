@@ -34,21 +34,23 @@ This repo ships one harness per technology, each as its own branch, so a project
 | `ios-macos` | iOS / macOS |
 | `kmp-cmp` | Kotlin Multiplatform / Compose Multiplatform |
 
-## Setup (this branch: generic)
+## Setup (this branch: kmp-cmp)
 
-Drop `project-template/` into your project root (or merge its contents if the project already has an `.ai/` folder), then fill in:
+Drop `project-template/` into your project root (or merge if it already has one), then fill in:
 
-- **`AGENTS.md` / `CLAUDE.md`** — agent entry points. Keep both in sync; they point at the same `.ai/` files. Edit only if your agent reads a different bootstrap file.
+- **`AGENTS.md` / `CLAUDE.md`** — agent entry points. Keep both in sync.
 - **`.ai/PROJECT_CONTEXT.md`** — durable facts (stack, modules, dependencies, build, testing, persistence, navigation, constraints). Update only when these actually change.
-- **`.ai/ARCHITECTURE.md`** — layers, dependency rules, boundaries, conventions. The agent must not contradict this without your approval.
-- **`.ai/CODE_STYLE.md`** — conventions not already enforced by a linter/formatter config.
-- **`.ai/HANDOFF.md`** — short-lived state for resuming work. Overwrite freely.
-- **`.ai/WORKFLOW.yaml`** — the harness config: engineer seniority/cognitive mode, which approvals are required, which git mutations are forbidden without explicit request, and verification requirements. Tune `engineer.seniority` and `engineer.cognitive_mode` to how much oversight you want; leave `git.mutations: forbidden_without_explicit_request` unless you want the agent branching/committing on its own.
-- **`.ai/decisions/`** — one file per ADR (Architecture Decision Record). Empty until a durable decision is made.
-- **`.ai/specs/`** — one file per feature/bug spec before implementation starts.
-- **`portable-plugin/plugin.json`** — the Skills manifest. Add/remove entries under `skills` to change which Skills load for this project.
-- **`portable-plugin/mcp.json`** — MCP servers available to the harness. Empty by default; add servers your workflow needs.
-- **`adapters/<agent>/`** — per-agent enforcement (hooks, permissions, rules). Fill in the folder matching your agent (`claude-code`, `codex`); leave the others empty.
+- **`.ai/ARCHITECTURE.md`** — source-set graph (what's `commonMain` vs `expect`/`actual` per target) and dependency rules. The agent must not contradict this without your approval.
+- **`.ai/CODE_STYLE.md`** — conventions not already enforced by ktlint/detekt.
+- **`.ai/HANDOFF.md`** / **`.ai/WORKFLOW.yaml`** — same as the generic branch (short-lived state, and the approval/verification config).
+- **`.ai/decisions/`** / **`.ai/specs/`** — ADRs and feature/bug specs, including `expect`/`actual` boundary decisions.
+- **`settings.gradle.kts`** — module list. `:shared` holds the KMP/CMP code; add `:androidApp` / `:desktopApp` (and wire an iOS app via Xcode/SPM consuming the shared framework) as targets go live.
+- **`build.gradle.kts`** (root) — top-level plugin versions (AGP, Kotlin, Compose Multiplatform). Bump here, not per-module.
+- **`shared/build.gradle.kts`** — the KMP module: declared targets (`androidTarget`, `iosX64`/`iosArm64`/`iosSimulatorArm64`, `jvm("desktop")`) and source sets. Add a target by declaring it here, then add its `xxxMain`/`xxxTest` source set; put code in `commonMain` unless a platform genuinely needs an `expect`/`actual` split.
+- **`gradle.properties`** — JVM/Gradle daemon flags, AndroidX toggle, and `kotlin.mpp.enableCInteropCommonization` for iOS interop.
+- **`portable-plugin/plugin.json`** — Skills manifest; keep `skills/kmp-engineering` enabled.
+- **`portable-plugin/mcp.json`** — MCP servers, empty by default.
+- **`adapters/<agent>/`** — per-agent enforcement; fill in the folder matching your agent.
 
 ## Status
 
