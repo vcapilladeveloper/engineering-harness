@@ -1,0 +1,29 @@
+name: App
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: "17.0"
+    macOS: "14.0"
+
+settings:
+  SWIFT_VERSION: "6.0"
+  SWIFT_STRICT_CONCURRENCY: complete
+
+targets:
+  App:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources/App
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.example.app
+    # dependencies:
+    #   - package: SomePackage
+
+  # AppTests:
+  #   type: bundle.unit-test
+  #   platform: iOS
+  #   sources:
+  #     - path: Tests/AppTests
+  #   dependencies:
+  #     - target: App
