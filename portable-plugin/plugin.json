@@ -1,0 +1,16 @@
+{
+  "name": "engineering-harness",
+  "version": "0.1.0",
+  "description": "Human-Centered Agentic Engineering Harness — spec-driven development with cognitive ownership preserved.",
+  "skills": [
+    "skills/bootstrap-project",
+    "skills/software-change",
+    "skills/technical-design",
+    "skills/implementation",
+    "skills/verification",
+    "skills/context-handoff",
+    "skills/ios-engineering",
+    "skills/android-engineering",
+    "skills/kmp-engineering"
+  ]
+}

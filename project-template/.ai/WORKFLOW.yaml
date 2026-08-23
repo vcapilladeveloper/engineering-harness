@@ -1,0 +1,54 @@
+version: 1
+
+engineer:
+  seniority: senior          # junior | mid | senior
+  cognitive_mode: pair        # learning | pair | delivery
+
+workflow:
+  spec_driven: true
+  cognitive_engineering: true
+
+approvals:
+  spec: required
+  technical_plan: required
+  implementation: required
+  scope_deviation: required
+
+cognitive:
+  architecture_decisions_require_human_ownership: true
+  explain_back: adaptive
+  knowledge_check: adaptive
+  prevent_silent_structural_decisions: true
+
+git:
+  mutations: forbidden_without_explicit_request
+  read_only_allowed:
+    - status
+    - diff
+    - log
+    - show
+  forbidden_without_explicit_request:
+    - switch
+    - checkout
+    - branch
+    - add
+    - commit
+    - pull
+    - push
+    - merge
+    - rebase
+    - reset
+    - cherry-pick
+    - stash
+
+verification:
+  build: required
+  tests: required
+  lint: when_available
+  static_analysis: when_available
+  validate_acceptance_criteria: required
+
+context:
+  consolidate_after_change: true
+  update_handoff: true
+  use_adrs_for_durable_decisions: true
