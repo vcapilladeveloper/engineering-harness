@@ -52,4 +52,4 @@ Drop `project-template/` into your project root (or merge its contents if the pr
 
 ## Status
 
-Early scaffold — see the linked roadmap for scope and sequencing.
+Early scaffold. Directory structure and platform branches are stable; template content (SPEC/ADR templates, PR policy, verification checklist, Skills) is still being filled in.
