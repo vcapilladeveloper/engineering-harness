@@ -48,6 +48,9 @@ Drop `project-template/` into your project root (or merge if it already has one)
 - **`Package.swift`** — SPM dependencies and any local library targets consumed by the app. Add `.package(...)` entries here, then wire them into `project.yml` targets under `dependencies`.
 - **`portable-plugin/plugin.json`** — Skills manifest; keep `skills/ios-engineering` enabled.
 - **`portable-plugin/mcp.json`** — MCP servers, empty by default.
+- **`portable-plugin/templates/`** — SPEC_FEATURE / SPEC_BUG / SPEC_SMALL_CHANGE / ADR templates. Copy the right one into `.ai/specs/` or `.ai/decisions/` when starting new work.
+- **`portable-plugin/PR_POLICY.md`** — sizing and review rules for PRs produced under this workflow.
+- **`portable-plugin/COGNITIVE_ENGINEERING.md`** — the Cognitive Ownership Rule, Cognitive Gates, Explain-back, and Cognitive Debt. Read this before tuning `engineer.cognitive_mode` — it explains what the config actually changes.
 - **`adapters/xcode/integration/`** — Xcode-specific hooks/build-phase integration for this harness.
 - **`adapters/<agent>/`** — per-agent enforcement; fill in the folder matching your agent.
 
