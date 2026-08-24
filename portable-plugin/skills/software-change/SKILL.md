@@ -36,18 +36,23 @@ rather than "add login validation"), it's a Feature:
    - Single-file/function, no architectural decision → `SPEC_SMALL_CHANGE.md`
 2. Write the Spec into `.ai/specs/` (or the Change Spec's folder under
    `.ai/features/`, if Step 0 applied). Get human approval before
-   continuing — see `.ai/WORKFLOW.yaml`'s `approvals.spec`. Depending on the
-   active `cognitive_mode`, this approval can itself be a Cognitive Gate
-   (e.g. asking the human to propose a solution first) — see
+   continuing — **Gate 1: SPEC Approved**
+   (`.ai/WORKFLOW.yaml`'s `approvals.spec`). Depending on the active
+   `cognitive_mode`, this approval can itself be a Cognitive Gate (e.g.
+   asking the human to propose a solution first) — see
    `portable-plugin/COGNITIVE_ENGINEERING.md`.
 3. Hand off to the **technical-design** Skill for anything beyond a small
-   change.
+   change — it ends with **Gate 2: Technical Plan Approved**.
 4. Hand off to **implementation** once the Technical Plan (or the
-   small-change spec itself) is approved.
+   small-change spec itself) is approved — it opens with
+   **Gate 3: Implementation Authorized** before any code changes, and
+   watches for the **Scope Deviation Gate** throughout.
 5. Hand off to **verification** before considering the change done.
 6. Hand off to **context-handoff** to close out — update `.ai/HANDOFF.md`,
    write an ADR if a durable decision was made.
 7. Follow `portable-plugin/PR_POLICY.md` when opening the PR.
 
-Never silently widen scope mid-change. If the work reveals a bigger problem,
-stop and write a new Spec for it instead of folding it into the current one.
+Never silently widen scope mid-change — that's what the Scope Deviation Gate
+(see `implementation/SKILL.md`) is for. If the work reveals a bigger
+problem, stop and write a new Spec for it instead of folding it into the
+current one.
