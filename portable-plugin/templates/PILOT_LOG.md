@@ -1,8 +1,9 @@
 # Pilot Log: <project name>
 
-Informal tracking for the v0.5 Pilot phase (spec §32) — no tooling needed,
-just enough discipline to notice patterns. Copy this into the pilot
-project's `.ai/` folder and add one row per Change run through the harness.
+For whoever adopts this harness on a real project and wants to track how
+well it's working (spec §32) — no tooling needed, just enough discipline to
+notice patterns. Copy this into the project's `.ai/` folder and add one row
+per Change run through the harness.
 
 ## Delivery metrics
 Track per Change:
