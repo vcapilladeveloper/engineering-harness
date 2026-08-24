@@ -15,6 +15,44 @@ Two goals at once: productivity **and** long-term technical competence.
 7. **Context must survive sessions.** Durable decisions and short-lived state live in different files.
 8. **Cognitive ownership is first-class.** Productivity must never come at the cost of turning the engineer into a spectator of their own code.
 
+## How It Works
+
+Every non-trivial change follows the same workflow
+(`portable-plugin/skills/software-change/SKILL.md`), gated by human approval
+at each step:
+
+1. **Feature-sized work only** — refine the product intent, write
+   `FEATURE.md` + `DELIVERY_PLAN.md`, and get **Gate 0: Delivery Slicing
+   Approved** before starting the first Change Spec.
+2. Write a Spec (`SPEC_FEATURE.md` / `SPEC_BUG.md` / `SPEC_SMALL_CHANGE.md`)
+   — **Gate 1: SPEC Approved**.
+3. Design the solution as a `TECHNICAL_PLAN.md` — **Gate 2: Technical Plan
+   Approved**, immediately followed by the **PR Planning Gate**
+   (`portable-plugin/PR_POLICY.md`): is this reviewable as one PR, or does
+   it need to split?
+4. **Gate 3: Implementation Authorized** — the agent states the expected
+   files and confirms no Git mutations, then asks to proceed.
+5. Implement and test the approved scope. The **Scope Deviation Gate** can
+   fire at any point here — a new dependency, an architecture change, a
+   public API change — the agent stops and asks rather than expanding
+   scope silently.
+6. Verify: build, tests, lint, and the Spec's acceptance criteria.
+7. Context Handoff: update `.ai/HANDOFF.md`, write an ADR if a durable
+   decision was made.
+
+How much the agent asks versus proposes at each gate is set by
+**Cognitive Mode** (`portable-plugin/COGNITIVE_ENGINEERING.md`), one of
+three settings in `.ai/WORKFLOW.yaml`:
+
+| Mode | Roughly | Agent behavior |
+|---|---|---|
+| `learning` | 80% human / 20% agent | Asks first, challenges assumptions, checks understanding often. |
+| `pair` (default) | 50/50 | Proposes alternatives and trade-offs; human decides on anything significant. |
+| `delivery` | 20% human / 80% agent | Runs with minimal interruption — but Spec/Plan/Scope-Deviation/Git approval stay protected regardless of mode. |
+
+Every gate leaves a durable file behind, not just a conversation — that's
+what makes the workflow resumable across sessions and reviewable by someone
+who wasn't there when the decision was made.
 ## Layout
 
 ```
