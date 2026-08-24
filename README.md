@@ -52,6 +52,7 @@ Drop `project-template/` into your project root (or merge if it already has one)
 - **`portable-plugin/templates/`** — SPEC_FEATURE / SPEC_BUG / SPEC_SMALL_CHANGE / TECHNICAL_PLAN / TASKS templates for a single Change Spec, plus FEATURE / DELIVERY_PLAN for multi-Spec features, and ADR. Copy the right one into `.ai/specs/`, `.ai/features/`, or `.ai/decisions/` when starting new work.
 - **`portable-plugin/PR_POLICY.md`** — sizing and review rules for PRs produced under this workflow.
 - **`portable-plugin/COGNITIVE_ENGINEERING.md`** — the Cognitive Ownership Rule, Cognitive Gates, Explain-back, and Cognitive Debt. Read this before tuning `engineer.cognitive_mode` — it explains what the config actually changes.
+- **`portable-plugin/templates/PILOT_LOG.md`** — informal per-Change delivery/cognitive metrics tracking. Only needed if you're piloting the harness on a project rather than just using it.
 - **`adapters/xcode/integration/xcodegen-build-phases.yml`** — a `prebuildScripts` snippet to merge into your target(s): keeps the generated `.xcodeproj` from drifting out of sync with `project.yml`, and runs SwiftLint on every build.
 - **`adapters/<agent>/`** — per-agent enforcement; fill in the folder matching your agent.
 
