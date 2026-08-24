@@ -22,5 +22,6 @@ Two sections carry the most weight:
 - **Testing Strategy** — must actually verify the Spec's acceptance
   criteria, not just "add some tests."
 
-Present the plan and stop. Do not begin implementation until the human
-approves it, and do not treat silence as approval.
+Present the plan and stop — **Gate 2: Technical Plan Approved.** Do not
+begin implementation until the human approves it, and do not treat silence
+as approval.
