@@ -1,18 +1,30 @@
-# Bug Spec: <name>
+# Bug Fix Spec: <name>
 
-## Symptom
-What is observed, with repro steps.
+## Observed Behaviour
 
-## Expected behavior
-What should happen instead.
+## Expected Behaviour
 
-## Root cause
-Fill in once diagnosed — don't jump to a fix before this is known.
+## Reproduction Steps
 
-## Acceptance criteria
-- [ ] Bug no longer reproduces via the steps above.
-- [ ] Regression test added covering the root cause.
+## Evidence
+Logs / screenshots / failing test / stack trace.
 
-## Scope
+## Root Cause
+Known / hypothesis / unresolved. Don't confuse symptom with root cause — if
+it isn't proven yet, label it as a hypothesis and keep investigating before
+shipping a structural fix.
+
+## Fix Scope
 Confirm the fix addresses the root cause for every caller, not just the
 reported path.
+
+## Regression Risk
+
+## Acceptance Criteria
+- [ ] Bug no longer reproduces via the steps above.
+
+## Regression Tests
+A test that fails before the fix, reproduces the broken behavior, passes
+after the fix, and stays as a regression guard. For bugs that can't be
+captured in a unit test, document the alternative verification method
+explicitly.
