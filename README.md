@@ -44,13 +44,14 @@ Drop `project-template/` into your project root (or merge if it already has one)
 - **`.ai/CODE_STYLE.md`** — conventions not already enforced by ktlint/detekt.
 - **`.ai/HANDOFF.md`** / **`.ai/WORKFLOW.yaml`** — same as the generic branch (short-lived state, and the approval/verification config).
 - **`.ai/decisions/`** / **`.ai/specs/`** — ADRs and feature/bug specs, including `expect`/`actual` boundary decisions.
+- **`.ai/features/`** — for multi-Spec features: `<slug>/FEATURE.md` + `DELIVERY_PLAN.md`, with each Change Spec in its own `changes/CS-NNN-<slug>/` folder. Skip this and use `.ai/specs/` directly for anything that's just one Change.
 - **`settings.gradle.kts`** — module list. `:shared` holds the KMP/CMP code; add `:androidApp` / `:desktopApp` (and wire an iOS app via Xcode/SPM consuming the shared framework) as targets go live.
 - **`build.gradle.kts`** (root) — top-level plugin versions (AGP, Kotlin, Compose Multiplatform). Bump here, not per-module.
 - **`shared/build.gradle.kts`** — the KMP module: declared targets (`androidTarget`, `iosX64`/`iosArm64`/`iosSimulatorArm64`, `jvm("desktop")`) and source sets. Add a target by declaring it here, then add its `xxxMain`/`xxxTest` source set; put code in `commonMain` unless a platform genuinely needs an `expect`/`actual` split.
 - **`gradle.properties`** — JVM/Gradle daemon flags, AndroidX toggle, and `kotlin.mpp.enableCInteropCommonization` for iOS interop.
 - **`portable-plugin/plugin.json`** — Skills manifest; keep `skills/kmp-engineering` enabled.
 - **`portable-plugin/mcp.json`** — MCP servers, empty by default.
-- **`portable-plugin/templates/`** — SPEC_FEATURE / SPEC_BUG / SPEC_SMALL_CHANGE / TECHNICAL_PLAN / TASKS / ADR templates. Copy the right one into `.ai/specs/` or `.ai/decisions/` when starting new work.
+- **`portable-plugin/templates/`** — SPEC_FEATURE / SPEC_BUG / SPEC_SMALL_CHANGE / TECHNICAL_PLAN / TASKS templates for a single Change Spec, plus FEATURE / DELIVERY_PLAN for multi-Spec features, and ADR. Copy the right one into `.ai/specs/`, `.ai/features/`, or `.ai/decisions/` when starting new work.
 - **`portable-plugin/PR_POLICY.md`** — sizing and review rules for PRs produced under this workflow.
 - **`portable-plugin/COGNITIVE_ENGINEERING.md`** — the Cognitive Ownership Rule, Cognitive Gates, Explain-back, and Cognitive Debt. Read this before tuning `engineer.cognitive_mode` — it explains what the config actually changes.
 - **`adapters/<agent>/`** — per-agent enforcement; fill in the folder matching your agent.
