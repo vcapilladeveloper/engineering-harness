@@ -1,9 +1,27 @@
-# Small Change: <name>
+# Lightweight Change Spec: <name>
 
-One-paragraph description. No Technical Plan needed — implement directly if
-the change is genuinely small (single file/function, no architectural
-decision). If it turns out to touch architecture or multiple modules, stop
-and write a Feature or Bug spec instead.
+Use this for a bounded adjustment to existing behavior — low risk, on
+architecture that's already understood. Escalate to a full Change Spec
+(`SPEC_FEATURE.md`) instead if the change turns out to involve any of:
+public API change, new dependency, cross-cutting impact, architecture
+change, data migration, security/privacy, non-trivial concurrency, multiple
+modules/teams affected, or ambiguous functional behavior.
 
-## Acceptance criteria
+## Change
+What should change?
+
+## Expected Behaviour
+
+## Acceptance Criteria
 - [ ] ...
+
+## Impacted Area
+
+## Risks / Edge Cases
+
+## Tests
+
+## Technical Approach
+- Files/components affected:
+- Intended implementation:
+- Tests to update/add:
