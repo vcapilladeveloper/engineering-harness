@@ -14,7 +14,10 @@ that case, it isn't a bypass of the workflow.
    - Something is broken → `SPEC_BUG.md`
    - Single-file/function, no architectural decision → `SPEC_SMALL_CHANGE.md`
 2. Write the Spec into `.ai/specs/`. Get human approval before continuing —
-   see `.ai/WORKFLOW.yaml`'s `approvals.spec`.
+   see `.ai/WORKFLOW.yaml`'s `approvals.spec`. Depending on the active
+   `cognitive_mode`, this approval can itself be a Cognitive Gate (e.g. asking
+   the human to propose a solution first) — see
+   `portable-plugin/COGNITIVE_ENGINEERING.md`.
 3. Hand off to the **technical-design** Skill for anything beyond a small
    change.
 4. Hand off to **implementation** once the Technical Plan (or the

@@ -19,7 +19,8 @@ description: Use when setting up the Engineering Harness in a new or existing pr
 5. Enable the matching adapter under `adapters/<agent>/` for whichever coding
    agent(s) the project uses.
 6. Set `.ai/WORKFLOW.yaml`'s `engineer.seniority` and `engineer.cognitive_mode`
-   to match how much oversight is wanted.
+   to match how much oversight is wanted — see
+   `portable-plugin/COGNITIVE_ENGINEERING.md` for what these actually change.
 7. Leave `.ai/decisions/` and `.ai/specs/` empty — they fill up as real work
    happens, not at bootstrap time.
 

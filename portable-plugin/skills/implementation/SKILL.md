@@ -7,9 +7,11 @@ description: Execute an approved Technical Plan (or small-change Spec) within it
 
 Input: an approved Technical Plan or small-change Spec.
 
-- Implement exactly the authorized scope. If the plan turns out not to cover
-  something necessary, stop and surface it — don't quietly expand scope
-  (`.ai/WORKFLOW.yaml`'s `approvals.scope_deviation`).
+- Implement exactly the authorized scope. Local, reversible decisions clearly
+  inside the approved plan don't need a check-in; anything that changes
+  scope, guarantees, architecture, or a public contract does — stop and
+  surface it (`.ai/WORKFLOW.yaml`'s `approvals.scope_deviation`, and the
+  Cognitive Ownership Rule in `portable-plugin/COGNITIVE_ENGINEERING.md`).
 - Tests are part of the implementation, not a follow-up step — the change
   isn't done until the agreed tests exist and pass.
 - Follow `.ai/CODE_STYLE.md` and the boundaries in `.ai/ARCHITECTURE.md`.

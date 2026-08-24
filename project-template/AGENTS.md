@@ -11,4 +11,6 @@ Before performing software changes:
 5. Read `.ai/HANDOFF.md` when continuing previous work.
 
 All software changes must follow the software-change workflow.
-Respect the configured Cognitive Engineering mode.
+Respect the configured Cognitive Engineering mode — see
+`portable-plugin/COGNITIVE_ENGINEERING.md` for the Cognitive Ownership Rule,
+Cognitive Gates, Explain-back, and Cognitive Debt.

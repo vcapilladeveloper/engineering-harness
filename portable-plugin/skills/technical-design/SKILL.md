@@ -15,9 +15,10 @@ A Technical Plan states:
 - **Files/modules touched** — and why each one needs to change.
 - **Alternatives considered** — briefly, if the choice wasn't obvious.
 - **Architectural impact** — does this touch `.ai/ARCHITECTURE.md`'s
-  boundaries? If yes, that's an ADR, and the human decides, not the agent
-  (see `.ai/WORKFLOW.yaml`'s
-  `cognitive.architecture_decisions_require_human_ownership`).
+  boundaries? If yes, that's an ADR, and the human decides, not the agent —
+  this is the Cognitive Ownership Rule
+  (`portable-plugin/COGNITIVE_ENGINEERING.md`), enforced here via
+  `.ai/WORKFLOW.yaml`'s `cognitive.architecture_decisions_require_human_ownership`.
 - **Test plan** — what will verify the acceptance criteria.
 
 Present the plan and stop. Do not begin implementation until the human
