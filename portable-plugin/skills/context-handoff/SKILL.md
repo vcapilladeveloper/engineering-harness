@@ -14,6 +14,9 @@ Run this at the end of a change, or when a session is ending mid-work.
    `.ai/decisions/ADR-<NNNN>-<slug>.md` using `portable-plugin/templates/ADR.md`.
    Don't retroactively write ADRs for decisions that were never really
    decisions.
+   An undocumented decision the user can't reconstruct later is exactly the
+   Cognitive Debt described in `portable-plugin/COGNITIVE_ENGINEERING.md` —
+   the ADR is what prevents it.
 3. If `.ai/PROJECT_CONTEXT.md` facts changed (new dependency, new module,
    changed build command), update it now — don't leave it stale for the next
    session to discover.
