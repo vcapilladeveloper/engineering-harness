@@ -45,10 +45,11 @@ Drop `project-template/` into your project root (or merge its contents if the pr
 - **`.ai/HANDOFF.md`** — short-lived state for resuming work. Overwrite freely.
 - **`.ai/WORKFLOW.yaml`** — the harness config: engineer seniority/cognitive mode, which approvals are required, which git mutations are forbidden without explicit request, and verification requirements. Tune `engineer.seniority` and `engineer.cognitive_mode` to how much oversight you want; leave `git.mutations: forbidden_without_explicit_request` unless you want the agent branching/committing on its own.
 - **`.ai/decisions/`** — one file per ADR (Architecture Decision Record). Empty until a durable decision is made.
-- **`.ai/specs/`** — one file per feature/bug spec before implementation starts.
+- **`.ai/specs/`** — one Spec (plus Technical Plan/Tasks) per Change, for single-Spec work.
+- **`.ai/features/`** — for multi-Spec features: `<slug>/FEATURE.md` + `DELIVERY_PLAN.md`, with each Change Spec in its own `changes/CS-NNN-<slug>/` folder. Skip this and use `.ai/specs/` directly for anything that's just one Change.
 - **`portable-plugin/plugin.json`** — the Skills manifest. Add/remove entries under `skills` to change which Skills load for this project.
 - **`portable-plugin/mcp.json`** — MCP servers available to the harness. Empty by default; add servers your workflow needs.
-- **`portable-plugin/templates/`** — SPEC_FEATURE / SPEC_BUG / SPEC_SMALL_CHANGE / TECHNICAL_PLAN / TASKS / ADR templates. Copy the right one into `.ai/specs/` or `.ai/decisions/` when starting new work.
+- **`portable-plugin/templates/`** — SPEC_FEATURE / SPEC_BUG / SPEC_SMALL_CHANGE / TECHNICAL_PLAN / TASKS templates for a single Change Spec, plus FEATURE / DELIVERY_PLAN for multi-Spec features, and ADR. Copy the right one into `.ai/specs/`, `.ai/features/`, or `.ai/decisions/` when starting new work.
 - **`portable-plugin/PR_POLICY.md`** — sizing and review rules for PRs produced under this workflow.
 - **`portable-plugin/COGNITIVE_ENGINEERING.md`** — the Cognitive Ownership Rule, Cognitive Gates, Explain-back, and Cognitive Debt. Read this before tuning `engineer.cognitive_mode` — it explains what the config actually changes.
 - **`adapters/<agent>/`** — per-agent enforcement (hooks, permissions, rules), already populated for `claude-code` and `codex`. Merge the relevant one into your project; leave the other agent's folder alone if unused.
