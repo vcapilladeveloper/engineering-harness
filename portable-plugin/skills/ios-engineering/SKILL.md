@@ -19,7 +19,10 @@ Applies on top of `software-change` / `technical-design` / `implementation` /
 
 ## Implementation notes
 - Run `xcodegen generate` after any `project.yml` change before building —
-  don't hand-edit the generated `.xcodeproj`.
+  don't hand-edit the generated `.xcodeproj`. Merging
+  `adapters/xcode/integration/xcodegen-build-phases.yml` into the target
+  makes this self-enforcing on every build instead of relying on remembering
+  to do it by hand.
 - Respect the module/target boundaries recorded in `.ai/ARCHITECTURE.md`.
 
 ## Verification additions

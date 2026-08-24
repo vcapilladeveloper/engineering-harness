@@ -1,0 +1,29 @@
+# Merge this into the relevant target(s) in your real project.yml — this
+# file is a snippet, not a standalone XcodeGen project. After merging, run
+# `xcodegen generate` once by hand; from then on both scripts below keep
+# themselves current on every build.
+#
+# Field names match XcodeGen's target build-script schema at the time this
+# was written. XcodeGen's schema does change across releases — if a field
+# is rejected, check `xcodegen ProjectSpec` or the installed version's docs.
+
+targets:
+  App: # replace with your target name
+    prebuildScripts:
+      - name: "Regenerate Xcode project if project.yml changed"
+        basedOnDependencyAnalysis: false
+        script: |
+          if [ "$SRCROOT/project.yml" -nt "$SRCROOT/$PROJECT_NAME.xcodeproj/project.pbxproj" ]; then
+            echo "project.yml changed — regenerating $PROJECT_NAME.xcodeproj"
+            (cd "$SRCROOT" && xcodegen generate)
+            echo "note: Xcode will offer to reload the project — accept it."
+          fi
+
+      - name: "SwiftLint"
+        basedOnDependencyAnalysis: false
+        script: |
+          if which swiftlint >/dev/null; then
+            swiftlint
+          else
+            echo "warning: SwiftLint not installed, skipping (brew install swiftlint)"
+          fi
