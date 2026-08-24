@@ -36,6 +36,66 @@ each time. If a decision would change the scope, the guarantees, the
 architecture, or a public contract, the agent must stop and ask — that's a
 scope deviation, not a local decision (see `implementation/SKILL.md`).
 
+## Seniority × Cognitive Mode
+
+Two independent dimensions, both configured in `.ai/WORKFLOW.yaml`:
+
+```yaml
+engineer:
+  seniority: senior          # junior | mid | senior
+  cognitive_mode: pair        # learning | pair | delivery
+```
+
+Don't confuse them: **seniority** is the technical level the agent assumes
+the user has; **cognitive_mode** is how much cognitive autonomy the user
+wants to give up. They combine into 9 configurations — a senior engineer can
+still pick `learning` for an unfamiliar area, and a junior engineer can pick
+`delivery` for a well-understood, low-risk change.
+
+### Seniority
+
+| Level | Agent behavior |
+|---|---|
+| Junior | Explains fundamentals, asks guided questions, introduces patterns/vocabulary, doesn't assume implicit knowledge. |
+| Mid | Focuses on trade-offs, design, testability, maintainability, and justifying decisions. |
+| Senior | Goes straight to complex trade-offs, questions abstractions, analyzes evolution/product/risk and second-order effects. |
+
+**The quality required of the code doesn't change with seniority — only the
+pedagogical interaction does.**
+
+Example, facing `protocol RecipeRepository`, all in `learning` mode:
+- **Junior + Learning:** "What problem do you think introducing a protocol
+  here solves?"
+- **Mid + Learning:** "What testability and dependency-inversion advantages
+  does this abstraction give you?"
+- **Senior + Learning:** "Defend why this protocol earns its place. Is there
+  a real architectural boundary here, or are we introducing speculative
+  abstraction?"
+
+### Cognitive Mode
+
+**Learning** — roughly 80% human reasoning / 20% agent guidance.
+The agent asks before resolving significant decisions, uses Socratic
+questioning, asks the user for an initial proposal first, challenges
+assumptions, explains alternatives only after the user has answered, uses
+Explain-back and Knowledge Check frequently, and avoids immediately writing
+the full solution when learning is at stake.
+
+**Pair** — roughly 50/50. **Default mode.**
+The agent proposes several alternatives with trade-offs, recommends one,
+asks the user to decide when the decision is significant, implements local
+decisions freely once the plan is approved, and uses Explain-back only on
+high-cognitive-value pieces.
+
+**Delivery** — roughly 20% human / 80% agent.
+The agent: (1) refines functionally, (2) generates the Spec, (3) proposes a
+Technical Plan, (4) explains the plan, (5) asks for approval to implement,
+(6) implements, tests, and verifies autonomously within the approved scope.
+It only interrupts for a scope change or a new significant decision.
+**Delivery does not remove human ownership** — Spec approval, Technical Plan
+approval, scope deviations, and all Git operations stay protected regardless
+of mode (see `.ai/WORKFLOW.yaml`'s `approvals` and `git` blocks).
+
 ## Cognitive Gates
 
 Beyond the standard approval gates (Spec, Technical Plan, Implementation
@@ -91,5 +151,4 @@ the Cognitive Ownership Rule, Cognitive Gates, and Explain-back are for.
   knowledge check.
 
 How "adaptive" resolves in practice depends on `engineer.seniority` and
-`engineer.cognitive_mode` — tracked separately as the Seniority × Cognitive
-Mode matrix.
+`engineer.cognitive_mode` — see the Seniority × Cognitive Mode section above.
