@@ -44,11 +44,12 @@ Drop `project-template/` into your project root (or merge if it already has one)
 - **`.ai/CODE_STYLE.md`** — conventions not already enforced by SwiftLint/SwiftFormat.
 - **`.ai/HANDOFF.md`** / **`.ai/WORKFLOW.yaml`** — same as the generic branch (short-lived state, and the approval/verification config).
 - **`.ai/decisions/`** / **`.ai/specs/`** — ADRs and feature/bug specs.
+- **`.ai/features/`** — for multi-Spec features: `<slug>/FEATURE.md` + `DELIVERY_PLAN.md`, with each Change Spec in its own `changes/CS-NNN-<slug>/` folder. Skip this and use `.ai/specs/` directly for anything that's just one Change.
 - **`project.yml`** — XcodeGen project spec: bundle id prefix, deployment targets, Swift version/strict concurrency, and the `targets` list. Add a target block per app/framework/test bundle instead of editing the generated `.xcodeproj` by hand; run `xcodegen generate` after any change.
 - **`Package.swift`** — SPM dependencies and any local library targets consumed by the app. Add `.package(...)` entries here, then wire them into `project.yml` targets under `dependencies`.
 - **`portable-plugin/plugin.json`** — Skills manifest; keep `skills/ios-engineering` enabled.
 - **`portable-plugin/mcp.json`** — MCP servers, empty by default.
-- **`portable-plugin/templates/`** — SPEC_FEATURE / SPEC_BUG / SPEC_SMALL_CHANGE / TECHNICAL_PLAN / TASKS / ADR templates. Copy the right one into `.ai/specs/` or `.ai/decisions/` when starting new work.
+- **`portable-plugin/templates/`** — SPEC_FEATURE / SPEC_BUG / SPEC_SMALL_CHANGE / TECHNICAL_PLAN / TASKS templates for a single Change Spec, plus FEATURE / DELIVERY_PLAN for multi-Spec features, and ADR. Copy the right one into `.ai/specs/`, `.ai/features/`, or `.ai/decisions/` when starting new work.
 - **`portable-plugin/PR_POLICY.md`** — sizing and review rules for PRs produced under this workflow.
 - **`portable-plugin/COGNITIVE_ENGINEERING.md`** — the Cognitive Ownership Rule, Cognitive Gates, Explain-back, and Cognitive Debt. Read this before tuning `engineer.cognitive_mode` — it explains what the config actually changes.
 - **`adapters/xcode/integration/`** — Xcode-specific hooks/build-phase integration for this harness.
