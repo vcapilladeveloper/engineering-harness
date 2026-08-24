@@ -42,7 +42,10 @@ rather than "add login validation"), it's a Feature:
    asking the human to propose a solution first) — see
    `portable-plugin/COGNITIVE_ENGINEERING.md`.
 3. Hand off to the **technical-design** Skill for anything beyond a small
-   change — it ends with **Gate 2: Technical Plan Approved**.
+   change — it ends with **Gate 2: Technical Plan Approved**, immediately
+   followed by the **PR Planning Gate** (`portable-plugin/PR_POLICY.md`):
+   confirm the resulting PR will be reviewable, or split the Change Spec if
+   not.
 4. Hand off to **implementation** once the Technical Plan (or the
    small-change spec itself) is approved — it opens with
    **Gate 3: Implementation Authorized** before any code changes, and
