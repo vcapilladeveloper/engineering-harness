@@ -33,3 +33,14 @@ Applies on top of `software-change` / `technical-design` / `implementation` /
 
 ## Config files this touches
 See the branch README for `project.yml` / `Package.swift` setup.
+
+## References
+Read on demand, not upfront — each covers one topic in more depth than
+belongs here:
+- `references/architecture.md` — target boundaries, dependency direction,
+  when a change needs an ADR.
+- `references/concurrency.md` — which Swift Concurrency decisions are
+  architectural (stop and ask) vs local (implement freely).
+- `references/testing.md` — which test bundle a change needs.
+- `references/project-integration.md` — the actual steps for adding a
+  target or dependency through `project.yml`.
