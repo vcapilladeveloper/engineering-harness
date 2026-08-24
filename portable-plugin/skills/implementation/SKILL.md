@@ -7,6 +7,10 @@ description: Execute an approved Technical Plan (or small-change Spec) within it
 
 Input: an approved Technical Plan or small-change Spec.
 
+- For non-trivial plans, break the work into
+  `portable-plugin/templates/TASKS.md` next to the Spec before starting —
+  optional for small changes. Work the tasks in order; don't skip straight
+  to writing code for the whole plan at once.
 - Implement exactly the authorized scope. Local, reversible decisions clearly
   inside the approved plan don't need a check-in; anything that changes
   scope, guarantees, architecture, or a public contract does — stop and

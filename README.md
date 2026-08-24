@@ -48,7 +48,7 @@ Drop `project-template/` into your project root (or merge its contents if the pr
 - **`.ai/specs/`** — one file per feature/bug spec before implementation starts.
 - **`portable-plugin/plugin.json`** — the Skills manifest. Add/remove entries under `skills` to change which Skills load for this project.
 - **`portable-plugin/mcp.json`** — MCP servers available to the harness. Empty by default; add servers your workflow needs.
-- **`portable-plugin/templates/`** — SPEC_FEATURE / SPEC_BUG / SPEC_SMALL_CHANGE / TECHNICAL_PLAN / ADR templates. Copy the right one into `.ai/specs/` or `.ai/decisions/` when starting new work.
+- **`portable-plugin/templates/`** — SPEC_FEATURE / SPEC_BUG / SPEC_SMALL_CHANGE / TECHNICAL_PLAN / TASKS / ADR templates. Copy the right one into `.ai/specs/` or `.ai/decisions/` when starting new work.
 - **`portable-plugin/PR_POLICY.md`** — sizing and review rules for PRs produced under this workflow.
 - **`portable-plugin/COGNITIVE_ENGINEERING.md`** — the Cognitive Ownership Rule, Cognitive Gates, Explain-back, and Cognitive Debt. Read this before tuning `engineer.cognitive_mode` — it explains what the config actually changes.
 - **`adapters/<agent>/`** — per-agent enforcement (hooks, permissions, rules), already populated for `claude-code` and `codex`. Merge the relevant one into your project; leave the other agent's folder alone if unused.
