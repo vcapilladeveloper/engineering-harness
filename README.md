@@ -36,6 +36,10 @@ This repo ships one harness per technology, each as its own branch, so a project
 
 ## Setup (this branch: kmp-cmp)
 
+See [INSTALL.md](INSTALL.md) for how to load this harness's Skills and
+adapters into your agent. The rest of this section covers which config
+files to fill in once it's installed.
+
 Drop `project-template/` into your project root (or merge if it already has one), then fill in:
 
 - **`AGENTS.md` / `CLAUDE.md`** — agent entry points. Keep both in sync.
