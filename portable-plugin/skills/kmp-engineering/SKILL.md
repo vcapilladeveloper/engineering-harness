@@ -32,3 +32,14 @@ Applies on top of `software-change` / `technical-design` / `implementation` /
 ## Config files this touches
 See the branch README for `settings.gradle.kts` / `shared/build.gradle.kts`
 / `gradle.properties` setup.
+
+## References
+Read on demand, not upfront — each covers one topic in more depth than
+belongs here:
+- `references/architecture.md` — commonMain-first, expect/actual as a
+  decision point, when a change needs an ADR.
+- `references/concurrency.md` — which coroutines decisions are
+  architectural (stop and ask) vs local (implement freely).
+- `references/testing.md` — which test source set a change needs.
+- `references/project-integration.md` — the actual steps for adding a
+  target or dependency through Gradle.
