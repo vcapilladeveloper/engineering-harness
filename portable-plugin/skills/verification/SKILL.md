@@ -21,3 +21,8 @@ Required before any change is considered done (`.ai/WORKFLOW.yaml`'s
 Report results honestly, including what wasn't run and why. "The agent said
 it passed" is not verification — the human confirms the commands were
 actually run for anything that ends up in the PR description.
+
+For changes with real cognitive weight, verification is also a good moment
+for an Explain-back check (`portable-plugin/COGNITIVE_ENGINEERING.md`) —
+confirm the human can restate why the fix/design works, not just that the
+tests are green.
